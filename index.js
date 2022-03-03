@@ -1,18 +1,25 @@
 const lc = require('./utils/index.js');
 
 async function test() {
-    await lc.contestRatingHistogram.getContestRatingHistogram('hongsuzu');
-    await lc.getUserDiscussTopics.getGetUserDiscussTopics('hongsuzu');
-    await lc.getUserProfile.getGetUserProfile('hongsuzu');
-    await lc.languageStats.getLanguageStats('hongsuzu');
-    await lc.recentAcSubmissions.getRecentAcSubmissions('hongsuzu');
-    await lc.skillStats.getSkillStats('hongsuzu');
-    await lc.userBadges.getUserBadges('hongsuzu');
-    await lc.userContestRankingInfo.getUserContestRankingInfo('hongsuzu');
-    await lc.userProblemsSolved.getUserProblemsSolved('hongsuzu');
-    await lc.userProfile.getUserProfile('hongsuzu');
-    await lc.userProfileCalendar.getUserProfileCalendar('hongsuzu');
-    await lc.userSolutionTopics.getUserSolutionTopics('hongsuzu');
+    const myArgs = process.argv.slice(2);
+    console.log('Input arguments: ', myArgs);
+    if (myArgs.length !== 1) {
+        console.log('Illegal arguments, please provide your username');
+        return;
+    }
+    name = myArgs[0];
+    await lc.contestRatingHistogram.getContestRatingHistogram(name);
+    await lc.getUserDiscussTopics.getGetUserDiscussTopics(name);
+    await lc.getUserProfile.getGetUserProfile(name);
+    await lc.languageStats.getLanguageStats(name);
+    await lc.recentAcSubmissions.getRecentAcSubmissions(name);
+    await lc.skillStats.getSkillStats(name);
+    await lc.userBadges.getUserBadges(name);
+    await lc.userContestRankingInfo.getUserContestRankingInfo(name);
+    await lc.userProblemsSolved.getUserProblemsSolved(name);
+    await lc.userProfile.getUserProfile(name);
+    await lc.userProfileCalendar.getUserProfileCalendar(name);
+    await lc.userSolutionTopics.getUserSolutionTopics(name);
 }
 
 test();
